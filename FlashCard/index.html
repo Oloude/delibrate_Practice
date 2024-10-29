@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Card</title>
+    <style>
+      .card {
+        width: 300px;
+        height: 400px;
+        perspective: 1000px; /* Needed to create a 3D space */
+      }
+
+      .card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d; /* Enable 3D space */
+        transition: transform 0.8s; /* Smooth transition for flipping */
+      }
+
+      .card:hover .card-inner {
+        transform: rotateY(180deg); /* Flip the inner content */
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden; /* Hide back face when flipping */
+      }
+
+      .card-back {
+        transform: rotateY(180deg); /* Make the back face rotated initially */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
